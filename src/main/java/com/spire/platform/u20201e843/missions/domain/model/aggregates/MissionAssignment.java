@@ -18,7 +18,10 @@ import java.time.LocalDateTime;
 public class MissionAssignment extends AuditableAbstractAggregateRoot<MissionAssignment> {
 
     @Embedded
-    @Column(nullable = false)
+    @AttributeOverride(
+            name = "satelliteCode",
+            column = @Column(name = "satellite_code", nullable = false)
+    )
     private SatelliteCode satelliteCode;
 
     @NotBlank
@@ -55,7 +58,7 @@ public class MissionAssignment extends AuditableAbstractAggregateRoot<MissionAss
     public void markAsUnderutilized() {
         addDomainEvent(new OrbitWindowUnderutilizedEvent(
                 this,
-                this.satelliteCode.toString()
+                this.satelliteCode.satelliteCode().toString()
         ));
     }
 }
