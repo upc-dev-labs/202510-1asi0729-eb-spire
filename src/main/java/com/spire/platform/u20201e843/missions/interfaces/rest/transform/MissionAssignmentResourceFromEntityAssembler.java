@@ -11,7 +11,9 @@ public class MissionAssignmentResourceFromEntityAssembler {
                 entity.getOrbitClass(),
                 entity.getEstimatedDuration(),
                 entity.getStatus().getLabel(),
-                entity.getRequestedAt()
+                entity.getRequestedAt(),
+                entity.getCreatedAt(),
+                entity.getUpdatedAt()
         );
     }
 }
