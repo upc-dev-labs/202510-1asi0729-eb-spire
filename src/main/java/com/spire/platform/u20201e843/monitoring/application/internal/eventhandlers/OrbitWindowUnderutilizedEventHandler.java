@@ -16,7 +16,7 @@ public class OrbitWindowUnderutilizedEventHandler {
         this.alertCommandService = alertCommandService;
     }
 
-    @EventListener
+    @EventListener(OrbitWindowUnderutilizedEvent.class)
     public void on(OrbitWindowUnderutilizedEvent event) {
         var createAlertCommand = new CreateAlertCommand(
                 event.getSatelliteCode(),
