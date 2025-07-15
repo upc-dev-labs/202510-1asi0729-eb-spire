@@ -48,6 +48,6 @@ public class MissionAssignment extends AuditableAbstractAggregateRoot<MissionAss
         this.orbitClass = command.orbitClass();
         this.estimatedDuration = command.estimatedDuration();
         this.status = MissionAssignmentStatus.fromLabel(command.status());
-        this.requestedAt = LocalDateTime.now();
+        this.requestedAt = command.requestedAt();
     }
 }
