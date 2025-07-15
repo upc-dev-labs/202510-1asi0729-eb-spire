@@ -1,11 +1,14 @@
 package com.spire.platform.u20201e843.monitoring.domain.model.valueobjects;
 
+import lombok.Getter;
+
 /**
  * Alert type with numeric ID mapping.
  *
  * @author Author
  * @since 1.0
  */
+@Getter
 public enum AlertType {
     UNSAFE_ORBIT_TASK(0, "UNSAFE_ORBIT_TASK"),
     NODE_COMMUNICATION_LOST(1, "NODE_COMMUNICATION_LOST"),
