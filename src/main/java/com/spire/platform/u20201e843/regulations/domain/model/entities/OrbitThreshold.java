@@ -31,4 +31,9 @@ public class OrbitThreshold {
         this.orbitClass = orbitClass;
         this.maxSafeDuration = maxSafeDuration;
     }
+
+    public boolean calculateSuboptimalUse(Integer estimatedDuration) {
+        var permittedDuration = this.maxSafeDuration * 0.2;
+        return estimatedDuration < permittedDuration;
+    }
 }
