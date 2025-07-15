@@ -1,6 +1,7 @@
 package com.spire.platform.u20201e843.missions.domain.model.aggregates;
 
 import com.spire.platform.u20201e843.missions.domain.model.commands.CreateMissionAssignmentCommand;
+import com.spire.platform.u20201e843.missions.domain.model.events.OrbitWindowUnderutilizedEvent;
 import com.spire.platform.u20201e843.missions.domain.model.valueobjects.MissionAssignmentStatus;
 import com.spire.platform.u20201e843.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
 import com.spire.platform.u20201e843.shared.domain.model.valueobjects.SatelliteCode;
@@ -49,5 +50,12 @@ public class MissionAssignment extends AuditableAbstractAggregateRoot<MissionAss
         this.estimatedDuration = command.estimatedDuration();
         this.status = MissionAssignmentStatus.fromLabel(command.status());
         this.requestedAt = command.requestedAt();
+    }
+
+    public void markAsUnderutilized() {
+        addDomainEvent(new OrbitWindowUnderutilizedEvent(
+                this,
+                this.satelliteCode.toString()
+        ));
     }
 }
